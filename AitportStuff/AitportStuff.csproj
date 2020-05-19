@@ -46,6 +46,7 @@
         <Compile Include="Flight.cs"/>
         <Compile Include="ISchedule.cs"/>
         <Compile Include="Location.cs"/>
+        <Compile Include="NullSchedule.cs"/>
         <Compile Include="Priority.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
