@@ -44,6 +44,11 @@ namespace AirportStuffTests
             Priority orderPriority = new Priority(1);
             Location origin = new Location("YYZ", "Toronto");
             Location destination = new Location("YUL", "Montreal");
+
+            Order order = new Order(origin, destination, orderPriority);
+            Assert.That(order.Origin, Is.EqualTo(origin));
+            Assert.That(order.Destination, Is.EqualTo(destination));
+            Assert.That(order.DeliveryPriority, Is.EqualTo(orderPriority));
         }
 
         [Test]
