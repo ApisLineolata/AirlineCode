@@ -13,7 +13,48 @@ namespace AitportStuff
                 return;
             }
 
-            _orders.First().Schedule = new BasicSchedule(_flights.First());
+            SortedDictionary<Flight, int> assignedCountFlights;
+            assignedCountFlights = CreateCapacityCountedDictionary(_flights);
+
+            foreach (Order order in _orders)
+            {
+                Flight? flightToSchedule = SelectFlight(order, assignedCountFlights);
+                if (flightToSchedule != null)
+                {
+                    order.Schedule = new BasicSchedule(flightToSchedule);
+                }
+            }
+        }
+
+        private static SortedDictionary<Flight, int> CreateCapacityCountedDictionary(List<Flight> _flights)
+        {
+            SortedDictionary<Flight, int> assignedCountFlights;
+            assignedCountFlights = new SortedDictionary<Flight, int>(Flight.FlightNumberComparer);
+            foreach (Flight flight in _flights)
+            {
+                assignedCountFlights[flight] = flight.Capacity;
+            }
+
+            return assignedCountFlights;
+        }
+
+        private Flight? SelectFlight(Order _orderToAssign, SortedDictionary<Flight, int> _assignedCountFlights)
+        {
+            foreach (KeyValuePair<Flight, int> assignedCountFlight in _assignedCountFlights)
+
+            {
+                Flight checkedFlight = assignedCountFlight.Key;
+                int remainingCapacity = assignedCountFlight.Value;
+                if (remainingCapacity <= 0)
+                {
+                    continue;
+                }
+
+                _assignedCountFlights[checkedFlight] = --remainingCapacity;
+                return checkedFlight;
+            }
+
+            return null;
         }
     }
 }

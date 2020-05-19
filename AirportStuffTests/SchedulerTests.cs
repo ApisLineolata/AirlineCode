@@ -38,6 +38,21 @@ namespace AirportStuffTests
         }
 
         [Test]
+        public void SchedulerSchedulesMultiOrderNotNull()
+        {
+            IScheduler scheduler = new BasicScheduler();
+            List<Order> orders = new List<Order>
+            {
+                new Order(Locations.CodeSelect("YUL"), Locations.CodeSelect("YYZ"), new Priority(2)),
+                new Order(Locations.CodeSelect("YUL"), Locations.CodeSelect("YYZ"), new Priority(1))
+            };
+            List<Flight> flights = new List<Flight> {new Flight(Locations.CodeSelect("YUL"), Locations.CodeSelect("YYZ"), 1, 20, 1)};
+
+            scheduler.AssignSchedules(orders, flights);
+            Assert.That(orders, Is.All.Property("Schedule").Not.TypeOf<NullSchedule>());
+        }
+
+        [Test]
         public void SchedulerSchedulesSingleOrder()
         {
             IScheduler scheduler = new BasicScheduler();
