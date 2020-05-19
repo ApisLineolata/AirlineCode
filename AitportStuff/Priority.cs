@@ -41,27 +41,27 @@ namespace AitportStuff
                 return 1;
             }
 
-            return m_priorityValue.CompareTo(_other.m_priorityValue);
+            return _other.m_priorityValue.CompareTo(m_priorityValue);
         }
 
         public static bool operator <(Priority _left, Priority _right)
         {
-            return Comparer<Priority>.Default.Compare(_left, _right) < 0;
+            return Comparer<Priority>.Default.Compare(_right, _left) < 0;
         }
 
         public static bool operator >(Priority _left, Priority _right)
         {
-            return Comparer<Priority>.Default.Compare(_left, _right) > 0;
+            return Comparer<Priority>.Default.Compare(_right, _left) > 0;
         }
 
         public static bool operator <=(Priority _left, Priority _right)
         {
-            return Comparer<Priority>.Default.Compare(_left, _right) <= 0;
+            return Comparer<Priority>.Default.Compare(_right, _left) <= 0;
         }
 
         public static bool operator >=(Priority _left, Priority _right)
         {
-            return Comparer<Priority>.Default.Compare(_left, _right) >= 0;
+            return Comparer<Priority>.Default.Compare(_right, _left) >= 0;
         }
     }
 }
