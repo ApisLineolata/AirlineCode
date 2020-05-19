@@ -5,7 +5,7 @@
         /// <inheritdoc />
         public string Output()
         {
-            return "Not scheduled";
+            return "not scheduled";
         }
     }
 }
