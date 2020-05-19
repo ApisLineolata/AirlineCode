@@ -18,7 +18,8 @@ namespace AirportStuffTests
         [Test]
         public void BasicScheduleInitialisedTest()
         {
-            ISchedule schedule = new BasicSchedule(2);
+            ISchedule schedule = new BasicSchedule(new Flight(new Location("YUL", "Montreal"), new Location("YYZ", "Toronto"), 1, 20, 2));
+
             Assert.That(schedule.Output, Is.EqualTo("flightNumber: 2"));
         }
 
@@ -72,22 +73,6 @@ namespace AirportStuffTests
         {
             ISchedule schedule = new NullSchedule();
             Assert.That(schedule.Output, Is.EqualTo("not scheduled"));
-        }
-    }
-
-    public class BasicSchedule : ISchedule
-    {
-        private readonly int m_flightNumber;
-
-        public BasicSchedule(int _flightNumber)
-        {
-            m_flightNumber = _flightNumber;
-        }
-
-        /// <inheritdoc />
-        public string Output()
-        {
-            return $"flightNumber: {m_flightNumber}";
         }
     }
 }
