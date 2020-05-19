@@ -20,6 +20,21 @@ namespace AirportStuffTests
         }
 
         [Test]
+        public void SchedulerBooksBasedOnPriority()
+        {
+            IScheduler scheduler = new BasicScheduler();
+            Order higherPriority = new Order(Locations.CodeSelect("YUL"), Locations.CodeSelect("YYZ"), new Priority(1));
+            List<Order> orders = new List<Order> {new Order(Locations.CodeSelect("YUL"), Locations.CodeSelect("YYZ"), new Priority(2)), higherPriority};
+            int smallFlightCapacity = 1;
+            Flight smallFlight = new Flight(Locations.CodeSelect("YUL"), Locations.CodeSelect("YYZ"), 1, smallFlightCapacity, 1);
+            List<Flight> flights = new List<Flight> {smallFlight, new Flight(Locations.CodeSelect("YUL"), Locations.CodeSelect("YYZ"), 2, 20, 2)};
+
+            scheduler.AssignSchedules(orders, flights);
+
+            Assert.That(higherPriority.Schedule.ScheduledFlight, Is.EqualTo(smallFlight));
+        }
+
+        [Test]
         public void SchedulerDoesNotOverBookCapacity()
         {
             IScheduler scheduler = new BasicScheduler();

@@ -15,8 +15,11 @@ namespace AitportStuff
 
             SortedDictionary<Flight, int> assignedCountFlights;
             assignedCountFlights = CreateCapacityCountedDictionary(_flights);
+            List<Order> sortedOrders = new List<Order>(_orders);
+            sortedOrders.Sort(Order.DeliveryPriorityComparer);
+            sortedOrders.Reverse();
 
-            foreach (Order order in _orders)
+            foreach (Order order in sortedOrders)
             {
                 Flight? flightToSchedule = SelectFlight(order, assignedCountFlights);
                 if (flightToSchedule != null)
