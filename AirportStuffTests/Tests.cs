@@ -7,6 +7,15 @@ namespace AirportStuffTests
     [TestFixture]
     public class Tests
     {
+        [TestCase(1, 2, ExpectedResult = true)]
+        [TestCase(2, 1, ExpectedResult = false)]
+        public bool PriorityComparesMultiTest(int firstPriority, int secondPriority)
+        {
+            Priority first = new Priority(firstPriority);
+            Priority second = new Priority(secondPriority);
+            return first > second;
+        }
+
         [Test]
         public void FlightInitialisedTest()
         {

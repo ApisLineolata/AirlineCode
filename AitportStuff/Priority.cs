@@ -46,22 +46,22 @@ namespace AitportStuff
 
         public static bool operator <(Priority _left, Priority _right)
         {
-            return Comparer<Priority>.Default.Compare(_right, _left) < 0;
+            return Comparer<Priority>.Default.Compare(_left, _right) < 0;
         }
 
         public static bool operator >(Priority _left, Priority _right)
         {
-            return Comparer<Priority>.Default.Compare(_right, _left) > 0;
+            return Comparer<Priority>.Default.Compare(_left, _right) > 0;
         }
 
         public static bool operator <=(Priority _left, Priority _right)
         {
-            return Comparer<Priority>.Default.Compare(_right, _left) <= 0;
+            return Comparer<Priority>.Default.Compare(_left, _right) <= 0;
         }
 
         public static bool operator >=(Priority _left, Priority _right)
         {
-            return Comparer<Priority>.Default.Compare(_right, _left) >= 0;
+            return Comparer<Priority>.Default.Compare(_left, _right) >= 0;
         }
     }
 }
