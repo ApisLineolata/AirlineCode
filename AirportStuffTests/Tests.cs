@@ -39,11 +39,44 @@ namespace AirportStuffTests
         }
 
         [Test]
+        public void OrderInitialisedTest()
+        {
+            Priority orderPriority = new Priority(1);
+            Location origin = new Location("YYZ", "Toronto");
+            Location destination = new Location("YUL", "Montreal");
+
+            // Order order = new Order(); 
+        }
+
+        [Test]
         public void PriorityComparesProperlyTest()
         {
             Priority higher = new Priority(1);
             Priority lower = new Priority(2);
             Assert.That(higher, Is.GreaterThan(lower));
+        }
+
+        [Test]
+        public void ScheduleInitialisedTest()
+        {
+            ISchedule schedule = new PseudoSchedule(1);
+            Assert.That(schedule.Output, Is.EqualTo("day: 1"));
+        }
+    }
+
+    public class PseudoSchedule : ISchedule
+    {
+        private readonly int m_day;
+
+        public PseudoSchedule(int _day)
+        {
+            m_day = _day;
+        }
+
+        /// <inheritdoc />
+        public string Output()
+        {
+            return $"day: {m_day}";
         }
     }
 }
