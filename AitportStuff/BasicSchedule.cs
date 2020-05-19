@@ -10,6 +10,9 @@
         }
 
         /// <inheritdoc />
+        public Flight? ScheduledFlight => assignedFlight;
+
+        /// <inheritdoc />
         public string Output()
         {
             return $"flightNumber: {assignedFlight.FlightNumber}";
