@@ -1,5 +1,4 @@
-﻿using System;
-using AitportStuff;
+﻿using AitportStuff;
 using NUnit.Framework;
 
 namespace AirportStuffTests
@@ -21,12 +20,12 @@ namespace AirportStuffTests
         {
             Location origin = new Location("YYZ", "Toronto");
             Location destination = new Location("YUL", "Montreal");
-            DateTime departure = new DateTime(2020, 01, 01, 12, 0, 0);
+            int departureDay = 1;
             int capacity = 20;
-            Flight flight = new Flight(origin, destination, departure, capacity);
+            Flight flight = new Flight(origin, destination, departureDay, capacity);
             Assert.That(flight.Origin, Is.EqualTo(origin));
             Assert.That(flight.Destination, Is.EqualTo(destination));
-            Assert.That(flight.Departure, Is.EqualTo(departure));
+            Assert.That(flight.DepartureDay, Is.EqualTo(departureDay));
             Assert.That(flight.Capacity, Is.EqualTo(capacity));
         }
 

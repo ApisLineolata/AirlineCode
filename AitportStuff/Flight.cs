@@ -1,20 +1,18 @@
-﻿using System;
-
-namespace AitportStuff
+﻿namespace AitportStuff
 {
     public class Flight
     {
-        public Flight(Location _origin, Location _destination, DateTime _departure, int _capacity)
+        public Flight(Location _origin, Location _destination, int _departureDay, int _capacity)
         {
             Origin = _origin;
             Destination = _destination;
-            Departure = _departure;
+            DepartureDay = _departureDay;
             Capacity = _capacity;
         }
 
         public Location Origin { get; }
         public Location Destination { get; }
-        public DateTime Departure { get; }
+        public int DepartureDay { get; }
         public int Capacity { get; }
     }
 }
