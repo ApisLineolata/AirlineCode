@@ -21,12 +21,14 @@ namespace AirportStuffTests
             Location origin = new Location("YYZ", "Toronto");
             Location destination = new Location("YUL", "Montreal");
             int departureDay = 1;
+            int flightNumber = 1;
             int capacity = 20;
-            Flight flight = new Flight(origin, destination, departureDay, capacity);
+            Flight flight = new Flight(origin, destination, departureDay, capacity, flightNumber);
             Assert.That(flight.Origin, Is.EqualTo(origin));
             Assert.That(flight.Destination, Is.EqualTo(destination));
             Assert.That(flight.DepartureDay, Is.EqualTo(departureDay));
             Assert.That(flight.Capacity, Is.EqualTo(capacity));
+            Assert.That(flight.FlightNumber, Is.EqualTo(flightNumber));
         }
 
         [Test]
