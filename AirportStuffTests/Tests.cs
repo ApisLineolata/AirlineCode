@@ -28,5 +28,13 @@ namespace AirportStuffTests
             Assert.That(location.Code, Is.EqualTo("YYZ"));
             Assert.That(location.City, Is.EqualTo("Toronto"));
         }
+
+        [Test]
+        public void PriorityComparesProperlyTest()
+        {
+            Priority higher = new Priority(1);
+            Priority lower = new Priority(2);
+            Assert.That(higher, Is.GreaterThan(lower));
+        }
     }
 }
