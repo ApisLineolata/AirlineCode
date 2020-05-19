@@ -12,5 +12,7 @@
         public Location Origin { get; }
         public Location Destination { get; }
         public Priority DeliveryPriority { get; }
+
+        public ISchedule Schedule { get; set; } = new NullSchedule();
     }
 }
